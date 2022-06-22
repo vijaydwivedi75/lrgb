@@ -1,5 +1,7 @@
 # LRGB: Long Range Graph Benchmark
 
+[![arXiv](https://img.shields.io/badge/arXiv-2206.08164-b31b1b.svg)](https://arxiv.org/abs/2206.08164)
+
 We present the **Long Range Graph Benchmark (LRGB)** with 5 graph learning datasets that arguably require
 long-range reasoning to achieve strong performance in a given task. 
 - PascalVOC-SP
@@ -75,3 +77,16 @@ Following is a list of direct URL links of the proposed datasets that are used i
 
 
 *[Custom License](http://host.robots.ox.ac.uk/pascal/VOC/voc2011/index.html) for Pascal VOC 2011 (respecting Flickr terms of use)
+
+
+## Citation
+
+If you find this work useful, please cite our paper:
+```bibtex
+@article{dwivedi2022LRGB,
+  title={Long Range Graph Benchmark}, 
+  author={Dwivedi, Vijay Prakash and Rampášek, Ladislav and Galkin, Mikhail and Parviz, Ali and Wolf, Guy and Luu, Anh Tuan and Beaini, Dominique},
+  journal={arXiv:2206.08164},
+  year={2022}
+}
+```
