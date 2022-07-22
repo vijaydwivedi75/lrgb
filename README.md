@@ -2,6 +2,8 @@
 
 [![arXiv](https://img.shields.io/badge/arXiv-2206.08164-b31b1b.svg)](https://arxiv.org/abs/2206.08164)
 
+<img src="https://i.imgur.com/2LKoGbu.png" align="right" width="275"/>
+
 We present the **Long Range Graph Benchmark (LRGB)** with 5 graph learning datasets that arguably require
 long-range reasoning to achieve strong performance in a given task. 
 - PascalVOC-SP
@@ -78,6 +80,8 @@ Following is a list of direct URL links of the proposed datasets that are used i
 
 *[Custom License](http://host.robots.ox.ac.uk/pascal/VOC/voc2011/index.html) for Pascal VOC 2011 (respecting Flickr terms of use)
 
+### Leaderboards
+The leaderboards of various models' performance on the datasets in LRGB are at [paperswithcode](https://paperswithcode.com/dataset/pascalvoc-sp).
 
 ## Citation
 
