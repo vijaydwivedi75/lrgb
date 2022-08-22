@@ -7,7 +7,8 @@ from torch_geometric.graphgym.register import register_network
 
 from graphgps.layer.gatedgcn_layer import GatedGCNLayer
 from graphgps.layer.gine_conv_layer import GINEConvLayer
-
+from graphgps.layer.gcnii_conv_layer import GCN2ConvLayer
+from graphgps.layer.mlp_layer import MLPLayer
 
 class CustomGNN(torch.nn.Module):
     """
@@ -29,6 +30,7 @@ class CustomGNN(torch.nn.Module):
             "The inner and hidden dims must match."
 
         conv_model = self.build_conv_model(cfg.gnn.layer_type)
+        self.model_type = cfg.gnn.layer_type
         layers = []
         for _ in range(cfg.gnn.layers_mp):
             layers.append(conv_model(dim_in,
@@ -45,12 +47,20 @@ class CustomGNN(torch.nn.Module):
             return GatedGCNLayer
         elif model_type == 'gineconv':
             return GINEConvLayer
+        elif model_type == 'gcniiconv':
+            return GCN2ConvLayer
+        elif model_type == 'mlp':
+            return MLPLayer
         else:
             raise ValueError("Model {} unavailable".format(model_type))
 
     def forward(self, batch):
         for module in self.children():
-            batch = module(batch)
+            if self.model_type == 'gcniiconv':
+                batch.x0 = batch.x # gcniiconv needs x0 for each layer
+                batch = module(batch)
+            else:
+                batch = module(batch)
         return batch
 
 
