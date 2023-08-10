@@ -105,7 +105,7 @@ Following is a list of direct URL links of the proposed datasets that are used i
 ### Leaderboards
 The leaderboards of various models' performance on the datasets in LRGB are at [paperswithcode](https://paperswithcode.com/dataset/pascalvoc-sp).
 
-Currently reported results (last update on Aug 1st, 2023)
+Currently reported results (last update on Aug 10th, 2023)
 
 <details>
   <summary> PascalVOC-SP (Node Classification) </summary>
@@ -114,6 +114,7 @@ Currently reported results (last update on Aug 1st, 2023)
   | --- | --- | --- | --- |
   | Exphormer | 0.3975±0.0037 | [Shirzad, Velingker, Venkatachalam, et al, ICML 2023](https://openreview.net/forum?id=3Ge74dgjjU) | 509k |
   | GraphGPS | 0.3748±0.0109 | [Rampášek et al, NeurIPS 2022](https://openreview.net/forum?id=lMMaNf6oxKM) | 510k |
+  | Cache-GNN+LapPE | 0.3462±0.0085 | [Ma et al, KDD 2023](https://dl.acm.org/doi/10.1145/3580305.3599260) | 500k | 
   | DRew-GatedGCN+LapPE | 0.3314±0.0024 | [Gutteridge et al, ICML 2023](https://openreview.net/forum?id=WEgjbJ6IDN) | 502k |
   | SAN+LapPE | 0.3230±0.0039 | [Dwivedi et al, NeurIPS 2022](https://arxiv.org/abs/2206.08164) | 531k |
   | SAN+RWSE | 0.3216±0.0027 | [Dwivedi et al, NeurIPS 2022](https://arxiv.org/abs/2206.08164) | 468k |
@@ -134,6 +135,7 @@ Currently reported results (last update on Aug 1st, 2023)
   | --- | --- | --- | --- |
   | Exphormer | 0.3455±0.0009 | [Shirzad, Velingker, Venkatachalam, et al, ICML 2023](https://openreview.net/forum?id=3Ge74dgjjU) | 499k |
   | GraphGPS | 0.3412±0.0044 | [Rampášek et al, NeurIPS 2022](https://openreview.net/forum?id=lMMaNf6oxKM) | 516k |
+  | Cache-GNN+LapPE | 0.2793±0.0033 | [Ma et al, KDD 2023](https://dl.acm.org/doi/10.1145/3580305.3599260) | 500k | 
   | GatedGCN | 0.2641±0.0045 | [Dwivedi et al, NeurIPS 2022](https://arxiv.org/abs/2206.08164) | 509k |
   | Transformer+LapPE | 0.2618±0.0031 | [Dwivedi et al, NeurIPS 2022](https://arxiv.org/abs/2206.08164) | 508k |
   | SAN+LapPE | 0.2592±0.0158 | [Dwivedi et al, NeurIPS 2022](https://arxiv.org/abs/2206.08164) | 536k |
@@ -157,6 +159,7 @@ Currently reported results (last update on Aug 1st, 2023)
   | MGT+WavePE | 0.6817±0.0064 | [Ngo, Hy, et al, 2023](https://arxiv.org/abs/2302.08647) | 499k |
   | PathNN | 0.6816±0.0026 | [Michel, Nikolentzos et al, ICML 2023](https://openreview.net/forum?id=5Purw053IP) | 510k |
   | GatedGCN+RWSE+virtual node | 0.6685±0.0062 | [Cai et al, ICML 2023](https://openreview.net/forum?id=1EuHYKFPgA) | 506k |
+  | Cache-GNN+LapPE | 0.6671±0.0056 | [Ma et al, KDD 2023](https://dl.acm.org/doi/10.1145/3580305.3599260) | 500k | 
   | Graph Diffuser | 0.6651±0.0010 | [Glickman & Yahav, 2023](https://arxiv.org/abs/2303.00613) | 509k |
   | CIN++ | 0.6569±0.0117 | [Giusti et al, 2023](https://arxiv.org/abs/2306.03561) | ~500k |
   | GraphGPS | 0.6535±0.0041 | [Rampášek et al, NeurIPS 2022](https://openreview.net/forum?id=lMMaNf6oxKM) | 504k |
@@ -177,6 +180,7 @@ Currently reported results (last update on Aug 1st, 2023)
 
   | Model | Test MAE (lower is better) | Reference | #params |
   | --- | --- | --- | --- |
+  | Cache-GNN+LapPE | 0.2358±0.0013 | [Ma et al, KDD 2023](https://dl.acm.org/doi/10.1145/3580305.3599260) | 500k | 
   | Graph ViT | 0.2449±0.0016 | [He et al, ICML 2023](https://openreview.net/forum?id=l7yTbEWuOQ) | 561k |
   | MGT+WavePE | 0.2453±0.0025 | [Ngo, Hy, et al, 2023](https://arxiv.org/abs/2302.08647) | 499k |
   | GRIT | 0.2460±0.0012 | [Ma, Lin, et al, ICML 2023](https://openreview.net/forum?id=HjMdlNgybR) | 439k |
@@ -206,6 +210,7 @@ Currently reported results (last update on Aug 1st, 2023)
   | Model | Test MRR (higher is better) | Test Hits@1 | Test Hits@3 | Test Hits@10 | Reference | #params |
 | --- | --- | --- | --- | --- | --- | --- |
 | Exphormer | 0.3637±0.0020 |  |  |  | [Shirzad, Velingker, Venkatachalam, et al, ICML 2023](https://openreview.net/forum?id=3Ge74dgjjU) | 396k |
+| Cache-GNN+RWSE | 0.3488±0.0008 | 0.1463±0.0011 | 0.4102±0.0008 | 0.8693±0.0008 | [Ma et al, KDD 2023](https://dl.acm.org/doi/10.1145/3580305.3599260) | 500k | 
 | DRew-GCN | 0.3444±0.0017 |  |  |  | [Gutteridge et al, ICML 2023](https://openreview.net/forum?id=WEgjbJ6IDN) | 515k |
 | Graph Diffuser | 0.3388±0.0011 | 0.1369±0.0012 | 0.4053±0.0011 | 0.8592±0.0007 | [Glickman & Yahav, 2023](https://arxiv.org/abs/2303.00613) | 521k |
 | SAN+LapPE | 0.3350±0.0003 | 0.1355±0.0017 | 0.4004±0.0021 | 0.8478±0.0044 | [Dwivedi et al, NeurIPS 2022](https://arxiv.org/abs/2206.08164) | 499k |
