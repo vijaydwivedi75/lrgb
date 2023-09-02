@@ -168,6 +168,7 @@ Currently reported results (last update on Aug 10th, 2023)
   | SAN+LapPE | 0.6384±0.0121 | [Dwivedi et al, NeurIPS 2022](https://arxiv.org/abs/2206.08164) | 493k |
   | Transformer+LapPE | 0.6326±0.0126 | [Dwivedi et al, NeurIPS 2022](https://arxiv.org/abs/2206.08164) | 488k |
   | GatedGCN+RWSE | 0.6069±0.0035 | [Dwivedi et al, NeurIPS 2022](https://arxiv.org/abs/2206.08164) | 506k |
+  | GIN | 0.6043±0.0216 | [Xu et al., ICLR 2019](https://arxiv.org/abs/1810.00826) | 235k |
   | GCN | 0.5930±0.0023 | [Dwivedi et al, NeurIPS 2022](https://arxiv.org/abs/2206.08164) | 508k |
   | GatedGCN | 0.5864±0.0077 | [Dwivedi et al, NeurIPS 2022](https://arxiv.org/abs/2206.08164) | 509k |
   | GCNII | 0.5543±0.0078 | [Dwivedi et al, NeurIPS 2022](https://arxiv.org/abs/2206.08164) | 505k |
