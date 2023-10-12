@@ -93,7 +93,7 @@ class GNNInductiveEdgeHead(nn.Module):
                 mrr_list.update(self._eval_mrr(pred_pos, pred_neg, 'torch', suffix='_filtered'))
 
                 # extended filter without self-loops
-                pred_masked[torch.arange(data.num_nodes), torch.arange(data.num_nodes)] -= float("inf")
+                pred_masked.fill_diagonal_(-float("inf"))
                 pred_neg = pred_masked[pos_edge_index[0]]
                 mrr_list.update(self._eval_mrr(pred_pos, pred_neg, 'torch', suffix='_filtered_noself'))
             else:
