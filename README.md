@@ -16,6 +16,11 @@ In this repo, we provide the source code to load the proposed datasets and run b
 The repo is based on [GraphGPS](https://github.com/rampasek/GraphGPS) which is built using [PyG](https://www.pyg.org/) and [GraphGym from PyG2](https://pytorch-geometric.readthedocs.io/en/2.0.0/notes/graphgym.html).
 
 
+### Update: Reassessment of LRGB
+
+For a reassessment of the baselines on which LRGB were initially evaluated, we refer to [this paper](https://arxiv.org/abs/2309.00367) and thank @toenshoff for the PR on PCQM-Contact's evaluation metric.
+
+
 ### Overview of Datasets
 
 |  Dataset | Domain  |  Task | Node Feat. (dim)  | Edge Feat. (dim) | Perf. Metric | 
