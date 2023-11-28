@@ -79,12 +79,23 @@ class GNNInductiveEdgeHead(nn.Module):
             # print(pred_pos)
 
             if num_pos_edges > 0:
-                neg_mask = torch.ones([num_pos_edges, data.num_nodes],
-                                      dtype=torch.bool)
+                # raw MRR (original metric)
+                neg_mask = torch.ones([num_pos_edges, data.num_nodes], dtype=torch.bool)
                 neg_mask[torch.arange(num_pos_edges), pos_edge_index[1]] = False
                 pred_neg = pred[pos_edge_index[0]][neg_mask].view(num_pos_edges, -1)
+                mrr_list = self._eval_mrr(pred_pos, pred_neg, 'torch', suffix='')
                 # print(pred_neg, pred_neg.shape)
-                mrr_list = self._eval_mrr(pred_pos, pred_neg, 'torch')
+
+                # filtered MRR
+                pred_masked = pred.clone()
+                pred_masked[pos_edge_index[0], pos_edge_index[1]] -= float("inf")
+                pred_neg = pred_masked[pos_edge_index[0]]
+                mrr_list.update(self._eval_mrr(pred_pos, pred_neg, 'torch', suffix='_filtered'))
+
+                # extended filter without self-loops
+                pred_masked.fill_diagonal_(-float("inf"))
+                pred_neg = pred_masked[pos_edge_index[0]]
+                mrr_list.update(self._eval_mrr(pred_pos, pred_neg, 'torch', suffix='_filtered_noself'))
             else:
                 # Return empty stats.
                 mrr_list = self._eval_mrr(pred_pos, pred_pos, 'torch')
@@ -111,7 +122,7 @@ class GNNInductiveEdgeHead(nn.Module):
             # print(f"{key}: {mean_val}")
         return batch_stats
 
-    def _eval_mrr(self, y_pred_pos, y_pred_neg, type_info):
+    def _eval_mrr(self, y_pred_pos, y_pred_neg, type_info, suffix=''):
         """ Compute Hits@k and Mean Reciprocal Rank (MRR).
 
         Implementation from OGB:
@@ -132,11 +143,10 @@ class GNNInductiveEdgeHead(nn.Module):
             hits10_list = (ranking_list <= 10).to(torch.float)
             mrr_list = 1. / ranking_list.to(torch.float)
 
-            return {'hits@1_list': hits1_list,
-                    'hits@3_list': hits3_list,
-                    'hits@10_list': hits10_list,
-                    'mrr_list': mrr_list}
-
+            return {f'hits@1{suffix}_list': hits1_list,
+                    f'hits@3{suffix}_list': hits3_list,
+                    f'hits@10{suffix}_list': hits10_list,
+                    f'mrr{suffix}_list': mrr_list}
         else:
             y_pred = np.concatenate([y_pred_pos.reshape(-1, 1), y_pred_neg],
                                     axis=1)
@@ -148,10 +158,10 @@ class GNNInductiveEdgeHead(nn.Module):
             hits10_list = (ranking_list <= 10).astype(np.float32)
             mrr_list = 1. / ranking_list.astype(np.float32)
 
-            return {'hits@1_list': hits1_list,
-                    'hits@3_list': hits3_list,
-                    'hits@10_list': hits10_list,
-                    'mrr_list': mrr_list}
+            return {f'hits@1{suffix}_list': hits1_list,
+                    f'hits@3{suffix}_list': hits3_list,
+                    f'hits@10{suffix}_list': hits10_list,
+                    f'mrr{suffix}_list': mrr_list}
 
 
 register_head('inductive_edge', GNNInductiveEdgeHead)
